@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/exploreraoi_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-33.31912888269055,-60.32171663397578],[-33.11017205769069,-59.947073204618235]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0');
+        map.getPane('pane_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0').style.zIndex = 400;
+        var layer_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0 = L.tileLayer('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/bbea3fa7b340c9a408638dcab1aafc9d-5e9b7a8a8d55993d01da40f6e07a45c8/tiles/{z}/{x}/{y}', {
+            pane: 'pane_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+        });
+        layer_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0;
+        map.addLayer(layer_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0);
+        map.createPane('pane_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1');
+        map.getPane('pane_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1').style.zIndex = 401;
+        var layer_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1 = L.tileLayer('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/b593daee9ef4138e8e590c5032d5c272-7c2db11a80b93e2f6508a594313ccd68/tiles/{z}/{x}/{y}', {
+            pane: 'pane_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+        });
+        layer_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1;
+        map.addLayer(layer_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1);
+        map.createPane('pane_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2');
+        map.getPane('pane_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2').style.zIndex = 402;
+        var layer_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2 = L.tileLayer('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/616e9c4a703429de863902fab2555912-1495c01b7eb49a5dff2ce4371ba69489/tiles/{z}/{x}/{y}', {
+            pane: 'pane_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+        });
+        layer_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2;
+        map.addLayer(layer_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2);
+        map.createPane('pane_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3');
+        map.getPane('pane_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3').style.zIndex = 403;
+        var layer_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3 = L.tileLayer('https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/ad176950a99bb5b3869a8d9727730854-691ed360396242e980f968668a1832c7/tiles/{z}/{x}/{y}', {
+            pane: 'pane_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+        });
+        layer_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3;
+        map.addLayer(layer_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3);
+        function pop_exploreraoi_4(feature, layer) {
+        }
+
+        function style_exploreraoi_4_0() {
+            return {
+                pane: 'pane_exploreraoi_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_exploreraoi_4');
+        map.getPane('pane_exploreraoi_4').style.zIndex = 404;
+        map.getPane('pane_exploreraoi_4').style['mix-blend-mode'] = 'normal';
+        var layer_exploreraoi_4 = new L.geoJson(json_exploreraoi_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_exploreraoi_4',
+            layerName: 'layer_exploreraoi_4',
+            pane: 'pane_exploreraoi_4',
+            onEachFeature: pop_exploreraoi_4,
+            style: style_exploreraoi_4_0,
+        });
+        bounds_group.addLayer(layer_exploreraoi_4);
+        map.addLayer(layer_exploreraoi_4);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/exploreraoi_4.png" /> explorer-aoi': layer_exploreraoi_4,"NDVI - S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610": layer_NDVIS2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_3,"S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610": layer_S2B_MSIL1C_20210829T140019_N0301_R067_T20HQJ_20210829T172610_2,"NDVI - S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019": layer_NDVIS2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_1,"S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019": layer_S2A_MSIL1C_20210824T140021_N0301_R067_T20HQJ_20210824T173019_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>

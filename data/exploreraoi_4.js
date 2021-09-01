@@ -1,0 +1,1 @@
+var json_exploreraoi_4 = {"type":"FeatureCollection","name":"exploreraoi_4","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[-60.244892,-33.275182],[-60.008962,-33.275182],[-60.008962,-33.142511],[-60.244892,-33.142511],[-60.244892,-33.275182]]]}}]}
